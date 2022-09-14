@@ -1,5 +1,5 @@
 # jax-image
-a docker image for run jax on windows
+a docker image for running jax on windows
 
 just run
 ```bash
