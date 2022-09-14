@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  jax:
+    container_name: jax
+    network_mode: bridge
+    ports:
+      - "8888:8888"
+    build:
+      context: .
+    image: "lckof/jax:${TAG}"
+    restart: always
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]

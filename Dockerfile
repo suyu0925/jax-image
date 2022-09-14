@@ -9,8 +9,8 @@ RUN pip install "jax[cuda]" -f https://storage.googleapis.com/jax-releases/jax_c
 # install jupyter notebook
 RUN pip install notebook
 
-# copy quickstart
-COPY ./Quickstart.ipynb /home/Quicstart.ipynb
+# copy template notebook file
+COPY ./*.ipynb /home/
 
 # entry point
 CMD ["jupyter", "notebook" , "--ip", "0.0.0.0", "--allow-root", "--no-browser","--NotebookApp.token=''","--NotebookApp.password=''", "/home"]
