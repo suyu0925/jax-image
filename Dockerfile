@@ -6,11 +6,11 @@ RUN apt update && apt install python3-pip -y
 # install jax
 RUN pip install "jax[cuda]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 
-# install jupyter notebook
-RUN pip install notebook
+# install jupyter lab
+RUN pip install jupyterlab
 
-# copy template notebook file
+# copy tutorial notebook files
 COPY ./*.ipynb /home/
 
 # entry point
-CMD ["jupyter", "notebook" , "--ip", "0.0.0.0", "--allow-root", "--no-browser","--NotebookApp.token=''","--NotebookApp.password=''", "/home"]
+CMD ["jupyter", "lab" , "--ip", "0.0.0.0", "--allow-root", "--no-browser", "--notebook-dir=/home/", "--ServerApp.token=''"]
