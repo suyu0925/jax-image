@@ -1,16 +1,14 @@
-FROM nvidia/cuda:11.7.1-devel-ubuntu20.04
+FROM ghcr.io/nvidia/jax:jax
 
-# install python3-pip
-RUN apt update && apt install python3-pip -y
-
-# install jax
-RUN pip install "jax[cuda]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+# use mirror for apt
+RUN sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/mirrors.cloud.tencent.com\/ubuntu\//g' /etc/apt/sources.list
+RUN sed -i 's/http:\/\/security.ubuntu.com\/ubuntu\//http:\/\/mirrors.cloud.tencent.com\/ubuntu\//g' /etc/apt/sources.list
 
 # install jupyter lab
-RUN pip install jupyterlab
+RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple jupyterlab
 
 # copy tutorial notebook files
 COPY ./*.ipynb /home/
 
 # entry point
-CMD ["jupyter", "lab" , "--ip", "0.0.0.0", "--allow-root", "--no-browser", "--notebook-dir=/home/", "--ServerApp.token=''"]
+ENTRYPOINT jupyter lab --ip 0.0.0.0 --allow-root --no-browser --notebook-dir=/home/ --IdentityProvider.token="$ENV_TOKEN"
