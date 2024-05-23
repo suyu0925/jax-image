@@ -7,7 +7,7 @@ a docker image providing a jax runtime with jupyterlab on windows.
 just run
 
 ```sh
-docker run --name jax --gpus=all -d -p 8888:8888 lckof/jax:0.0.5
+docker run --name jax --gpus=all -d --restart=always -e ENV_TOKEN='may-use-a-guid' -p 8888:8888 lckof/jax:0.0.5
 ```
 
 then open <http://localhost:8888>
@@ -30,7 +30,7 @@ As of today, the latest version of `ghcr.io/nvidia/jax:base` uses [nvidia/cuda:1
 
 Actually, installing [cuda toolkit](https://developer.nvidia.com/cuda-downloads) on windows is not need, nvidia drivers like [GeForce Game Ready](https://www.nvidia.com/download/driverResults.aspx/223955/en-us/) contains cuda 12.4, see the table [CUDA Toolkit and Corresponding Driver Versions](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#id4).
 
-If your NVIDIA driver version is >=555.85, then your system's CUDA version is 12.5 (you can check these versions by [nvidia-smi.exe](https://developer.nvidia.com/system-management-interface)). Even if you install CUDA Toolkit 12.4, it won't be useful; the system's CUDA version remains 12.5. In this case, uninstall nvidia driver and re-install the right one.
+If your NVIDIA driver version is >=555.85, then your system's CUDA version is 12.5 (you can check these versions by [nvidia-smi.exe](https://developer.nvidia.com/system-management-interface)). Even if you install CUDA Toolkit 12.4, it won't be useful; the system's CUDA version remains 12.5. In this case, uninstall nvidia driver and re-install the right one. like [552.22 04/16/2024](https://www.nvidia.com/en-us/geforce/drivers/results/224154/), you can find CUDA version in [v552.22 Release Notes](https://us.download.nvidia.com/Windows/552.22/552.22-win11-win10-release-notes.pdf) Chapter 2.3.
 
 ## publish
 
