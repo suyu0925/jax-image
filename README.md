@@ -1,6 +1,6 @@
 # jax-image
 
-a docker image for running jax on windows
+a docker image providing a jax runtime with jupyterlab on windows.
 
 ## TL;DR
 
@@ -22,7 +22,9 @@ the newest version of jax is named `jaxlib-0.4.28+cuda12.cudnn89`.
 
 ## [nvidia jax](https://jax.readthedocs.io/en/latest/installation.html#nvidia-gpu-docker-containers)
 
-`ghcr.io/nvidia/jax:jax` in [jax-toolbox](https://github.com/NVIDIA/JAX-Toolbox) is be with cuda 12.4, cudnn 9.1, and jax 0.4.29.dev20240521.
+nvidia has an official project [jax-toolbox](https://github.com/NVIDIA/JAX-Toolbox) that integrates JAX, use [nvidia/cuda](https://hub.docker.com/r/nvidia/cuda) as base image, and adds support for jax.
+
+As of today, the latest version of `ghcr.io/nvidia/jax:base` uses [nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04](https://hub.docker.com/r/nvidia/cuda/tags?page=&page_size=&ordering=&name=12.4.1-cudnn-devel-ubuntu22.04) as base image, and `ghcr.io/nvidia/jax:jax` integrates `jax 0.4.29.dev20240521`.
 
 ## system cuda version
 
