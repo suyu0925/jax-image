@@ -12,6 +12,12 @@ docker run --name jax --gpus=all -d --restart=always -e ENV_TOKEN='may-use-a-gui
 
 then open <http://localhost:8888>
 
+if you want to persist notebook files, you can mount a volume to `/home`, like
+
+```sh
+docker run --name jax --gpus=all -d --restart=always -e ENV_TOKEN='may-use-a-guid' -p 8888:8888 -v ./workspace:/home lckof/jax:0.0.5
+```
+
 ## jax cuda version
 
 jax does not support all versions of cuda, you can check the supported versions in [jax cuda releases](https://storage.googleapis.com/jax-releases/jax_cuda_releases.html).
